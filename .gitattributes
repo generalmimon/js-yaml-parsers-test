@@ -1,0 +1,3 @@
+# Let Git decide whether a file is text or binary. If it is text, line endings
+# are normalized to LF in the index every time the file is checked in.
+* text=auto
