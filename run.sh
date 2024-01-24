@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-node index.js logs/
+node index.js results/

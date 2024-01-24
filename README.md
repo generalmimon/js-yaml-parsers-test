@@ -8,13 +8,13 @@ Compare 3 YAML parsers available in the JS ecosystem:
 
 ## Usage
 
-* `./run.sh` - runs test cases specified in [index.js](./index.js) on all YAML parsers, resulting in log files written to [logs/](./logs/):
+* `./run.sh` - runs test cases specified in [index.js](./index.js) on all YAML parsers, resulting in log files written to [results/](./results/):
 
   ```
-  logs/
-  ├── js-yaml.log
-  ├── yaml.log
-  └── yamljs.log
+  results/
+  ├── js-yaml.txt
+  ├── yaml.txt
+  └── yamljs.txt
   ```
 
 * `./parse.sh <ks_base_dir>` - parses 3 sets of YAML files, converts them to JSON and writes `.json` files to `out/`:

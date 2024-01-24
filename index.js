@@ -198,7 +198,7 @@ try {
 
 for (const [yamlParserName, initParser] of Object.entries(yamlParsers)) {
   const parseYaml = initParser().parse;
-  const outputFilename = resolve(outdir, yamlParserName + '.log');
+  const outputFilename = resolve(outdir, yamlParserName + '.txt');
   let output = '';
   for (const testCase of testCases) {
     if (Array.isArray(testCase.url)) {
