@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "js-yaml-parsers-test",
+  "version": "0.1.0",
+  "description": "Test JavaScript YAML parsers",
+  "license": "MIT",
+  "author": "Petr Pucil",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "yaml": "^2.3.4",
+    "yamljs": "^0.3.0"
+  }
+}
