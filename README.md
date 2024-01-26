@@ -46,5 +46,13 @@ Compare 3 YAML parsers available in the JS ecosystem:
   This makes it easy to compare the results of YAML parsers between each other, for example:
 
   ```
-  git diff --no-index out/{yamljs,js-yaml}/
+  git diff --no-index -- out/{yamljs,js-yaml}/
+  ```
+
+* `./gen-results-diffs.sh` - generates the [results-diffs/](./results-diffs/) folder with diffs between logs in [results/](./results/):
+
+  ```
+  results-diffs/
+  ├── yaml_vs_js-yaml.diff
+  └── yamljs_vs_js-yaml.diff
   ```

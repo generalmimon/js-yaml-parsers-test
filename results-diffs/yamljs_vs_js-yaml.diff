@@ -1,0 +1,201 @@
+diff --git 1/C:/temp/js-yaml-parsers-test/results/yamljs.txt 2/C:/temp/js-yaml-parsers-test/results/js-yaml.txt
+index 14ce1a6..8c8213d 100644
+--- 1/C:/temp/js-yaml-parsers-test/results/yamljs.txt
++++ 2/C:/temp/js-yaml-parsers-test/results/js-yaml.txt
+@@ -1,6 +1,6 @@
+ https://github.com/kaitai-io/kaitai_struct_webide/issues/63
+ size: 0x30150-0x30010
+-{ size: 3304172224528 }
++{ size: '0x30150-0x30010' }
+ 
+ https://github.com/kaitai-io/kaitai_struct/issues/456
+ instances:
+@@ -10,7 +10,11 @@ instances:
+     size: size
+ {
+   instances: {
+-    compressed: { io: '_root._io', pos: 19332502143299584, size: 'size' }
++    compressed: {
++      io: '_root._io',
++      pos: '0x44 + _parent.compression_header_size + offset',
++      size: 'size'
++    }
+   }
+ }
+ 
+@@ -19,11 +23,11 @@ enums:
+   my_enum:
+     0b011: a
+     0b110: b
+-{ enums: { my_enum: { '0': 'a' } } }
++{ enums: { my_enum: { '3': 'a', '6': 'b' } } }
+ 
+ https://app.gitter.im/#/room/!UakDfENneauyHdHlha:gitter.im/$gFobsc4usSV1dvgBUar_u_1zlAtn4w6YC9BXwHx0YwY
+ value: 0b10101010
+-{ value: 0 }
++{ value: 170 }
+ 
+ https://github.com/kaitai-io/kaitai_struct_webide/issues/27
+ seq:
+@@ -36,7 +40,7 @@ seq:
+     {
+       id: 'stringdemo',
+       size: 0,
+-      doc: 'This is a flow-style\nmulti-line string'
++      doc: 'This is a flow-style multi-line string'
+     }
+   ]
+ }
+@@ -45,7 +49,13 @@ https://doc.kaitai.io/user_guide.html#_ternary_if_then_else_operator
+ instances:
+   foo:
+     value: condition ? 4 : 8
+-{ instances: { foo: { value: 'condition ? 4 : 8' } } }
++ERROR:
++> YAMLException: bad indentation of a mapping entry in "input.ksy" (3:26)
++> 
++>  1 | instances:
++>  2 |   foo:
++>  3 |     value: condition ? 4 : 8
++> ------------------------------^
+ 
+ https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$U6Oydw-sZNk4w1eHjLpZ9Y7cAsn6j7UD1n_F8BB0lhw
+ my_enum:
+@@ -95,10 +105,10 @@ binary: 0b1010_0111_0100_1010_1110
+ sexagesimal: 190:20:30
+ {
+   canonical: 685230,
+-  decimal: '+685_230',
+-  octal: 685230,
++  decimal: 685230,
++  octal: 2472256,
+   hexadecimal: 685230,
+-  binary: '0b1010_0111_0100_1010_1110',
++  binary: 685230,
+   sexagesimal: '190:20:30'
+ }
+ 
+@@ -107,7 +117,7 @@ canonical: 12345
+ decimal: +12345
+ octal: 0o14
+ hexadecimal: 0xC
+-{ canonical: 12345, decimal: 12345, octal: 0, hexadecimal: 12 }
++{ canonical: 12345, decimal: 12345, octal: 12, hexadecimal: 12 }
+ 
+ https://yaml.org/spec/1.1/#id858801 | https://yaml.org/spec/1.2.2/#example-timestamps
+ canonical: 2001-12-15T02:59:43.1Z
+@@ -115,17 +125,23 @@ iso8601: 2001-12-14t21:59:43.10-05:00
+ spaced: 2001-12-14 21:59:43.10 -5
+ date: 2002-12-14
+ {
+-  canonical: 2001-12-15T02:59:43.100Z,
+-  iso8601: 2001-12-15T02:59:43.100Z,
+-  spaced: 2001-12-15T02:59:43.100Z,
+-  date: 2002-12-14T00:00:00.000Z
++  canonical: '2001-12-15T02:59:43.1Z',
++  iso8601: '2001-12-14t21:59:43.10-05:00',
++  spaced: '2001-12-14 21:59:43.10 -5',
++  date: '2002-12-14'
+ }
+ 
+ https://github.com/kaitai-io/kaitai_struct_tests/blob/7d7ecf076cc02c5032ec399655b7c3d50bde96ad/formats_err/yaml_1.ksy
+ meta:
+   id: yaml_1
+     seq:
+-{ meta: { id: 'yaml_1\nseq:' } }
++ERROR:
++> YAMLException: bad indentation of a mapping entry in "input.ksy" (3:8)
++> 
++>  1 | meta:
++>  2 |   id: yaml_1
++>  3 |     seq:
++> ------------^
+ 
+ https://github.com/kaitai-io/kaitai_struct_tests/blob/7d7ecf076cc02c5032ec399655b7c3d50bde96ad/formats_err/yaml_dup_keys.ksy
+ meta:
+@@ -136,12 +152,26 @@ seq:
+ seq:
+   - id: bar
+     type: u1
+-{ meta: { id: 'yaml_dup_keys' }, seq: [ { id: 'foo', type: 'u1' } ] }
++ERROR:
++> YAMLException: duplicated mapping key in "input.ksy" (6:1)
++> 
++>  3 | seq:
++>  4 |   - id: foo
++>  5 |     type: u1
++>  6 | seq:
++> -----^
++>  7 |   - id: bar
++>  8 |     type: u1
+ 
+ https://medium.com/@P0lip/yaml-is-great-but-dont-use-it-2d02a60181ab#ffe6
+ 2: "bar"
+ "2": "foo"
+-{ '2': 'bar' }
++ERROR:
++> YAMLException: duplicated mapping key in "input.ksy" (2:1)
++> 
++>  1 | 2: "bar"
++>  2 | "2": "foo"
++> -----^
+ 
+ https://github.com/kaitai-io/kaitai_struct_webide/issues/62
+ # Line 1
+@@ -155,7 +185,15 @@ types:
+       - id: species
+         type: s4
+ ERROR:
+-> <ParseException> Indentation problem. (line 4: '  seq:  # line 8, but yaml.js says line 4!')
++> YAMLException: bad indentation of a mapping entry in "input.ksy" (8:5)
++> 
++>  5 | types:
++>  6 |   animal:
++>  7 |       doc: An animal species
++>  8 |     seq:  # line 8, but yaml.js says ...
++> ---------^
++>  9 |       - id: species
++>  10 |         type: s4
+ 
+ https://github.com/kaitai-io/kaitai_struct/issues/693
+ {
+@@ -177,24 +215,22 @@ https://github.com/kaitai-io/kaitai_struct/issues/693
+     }
+   ]
+ }
+-ERROR:
+-> <ParseException> Unexpected characters (
+->   },
+->   "seq": [
+->     {
+->       "id": "version",
+->       "contents": [
+->         1,
+->         255,
+->         255,
+->         255
+->       ],
+->       "doc": "4 - structure version"
+->     }
+->   ]
+-> }). (line 1: '{')
++{
++  doc: 'json test',
++  meta: { id: 'test', endian: 'le' },
++  seq: [
++    {
++      id: 'version',
++      contents: [ 1, 255, 255, 255 ],
++      doc: '4 - structure version'
++    }
++  ]
++}
+ 
+ https://github.com/nodeca/js-yaml/pull/480
+ { toString: !<tag:yaml.org,2002:js/function> 'function (){return Date.now()}' } : 1
+ ERROR:
+-> <ParseException> Unexpected characters near "' } : 1". (line 1: '{ toString: !<tag:yaml.org,2002:js/function> 'function (){return Date.now()}' } : 1')
++> YAMLException: unknown tag !<tag:yaml.org,2002:js/function> in "input.ksy" (1:78)
++> 
++>  1 |  ... function (){return Date.now()}' } : 1
++> -----------------------------------------^
