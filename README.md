@@ -18,6 +18,8 @@ Compare 3 YAML parsers available in the JS ecosystem:
   └── yamljs.txt
   ```
 
+* `./gen-results-diffs.sh` - generates the [results-diffs/](./results-diffs/) folder with diffs between logs in [results/](./results/)
+
 * `./parse.sh <ks_base_dir>` - parses 3 sets of YAML files, converts them to JSON and writes `.json` files to `out/`:
 
   * https://github.com/kaitai-io/kaitai_struct_formats
@@ -47,5 +49,3 @@ Compare 3 YAML parsers available in the JS ecosystem:
   ```
   git diff --no-index -- out/{yamljs,js-yaml}/
   ```
-
-* `./gen-results-diffs.sh` - generates the [results-diffs/](./results-diffs/) folder with diffs between logs in [results/](./results/)
