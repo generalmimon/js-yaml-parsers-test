@@ -1,0 +1,90 @@
+diff --git 1/C:/temp/js-yaml-parsers-test/results/yaml-1.1.txt 2/C:/temp/js-yaml-parsers-test/results/yaml-1.2.txt
+index 4058599..12dcf76 100644
+--- 1/C:/temp/js-yaml-parsers-test/results/yaml-1.1.txt
++++ 2/C:/temp/js-yaml-parsers-test/results/yaml-1.2.txt
+@@ -23,11 +23,11 @@ enums:
+   my_enum:
+     0b011: a
+     0b110: b
+-{ enums: { my_enum: { '3': 'a', '6': 'b' } } }
++{ enums: { my_enum: { '0b011': 'a', '0b110': 'b' } } }
+ 
+ https://app.gitter.im/#/room/!UakDfENneauyHdHlha:gitter.im/$gFobsc4usSV1dvgBUar_u_1zlAtn4w6YC9BXwHx0YwY
+ value: 0b10101010
+-{ value: 170 }
++{ value: '0b10101010' }
+ 
+ https://github.com/kaitai-io/kaitai_struct_webide/issues/27
+ seq:
+@@ -60,7 +60,7 @@ https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$U6Oydw-sZNk4w1eHjLp
+ my_enum:
+   0: off
+   1: on
+-{ my_enum: { '0': false, '1': true } }
++{ my_enum: { '0': 'off', '1': 'on' } }
+ 
+ https://yaml.org/type/bool.html
+ yaml_1_1_only_truths: [y, Y, yes, Yes, YES, on, On, ON]
+@@ -69,15 +69,14 @@ yaml_1_2_core_schema_truths: [true, True, TRUE]
+ yaml_1_2_core_schema_falses: [false, False, FALSE]
+ {
+   yaml_1_1_only_truths: [
+-    true, true, true,
+-    true, true, true,
+-    true, true
++    'y',   'Y',   'yes',
++    'Yes', 'YES', 'on',
++    'On',  'ON'
+   ],
+   yaml_1_1_only_falses: [
+-    false, false,
+-    false, false,
+-    false, false,
+-    false, false
++    'n',   'N',   'no',
++    'No',  'NO',  'off',
++    'Off', 'OFF'
+   ],
+   yaml_1_2_core_schema_truths: [ true, true, true ],
+   yaml_1_2_core_schema_falses: [ false, false, false ]
+@@ -105,11 +104,11 @@ binary: 0b1010_0111_0100_1010_1110
+ sexagesimal: 190:20:30
+ {
+   canonical: 685230,
+-  decimal: 685230,
+-  octal: 685230,
+-  hexadecimal: 685230,
+-  binary: 685230,
+-  sexagesimal: 685230
++  decimal: '+685_230',
++  octal: 2472256,
++  hexadecimal: '0x_0A_74_AE',
++  binary: '0b1010_0111_0100_1010_1110',
++  sexagesimal: '190:20:30'
+ }
+ 
+ https://yaml.org/spec/1.2.2/#example-integers
+@@ -117,7 +116,7 @@ canonical: 12345
+ decimal: +12345
+ octal: 0o14
+ hexadecimal: 0xC
+-{ canonical: 12345, decimal: 12345, octal: '0o14', hexadecimal: 12 }
++{ canonical: 12345, decimal: 12345, octal: 12, hexadecimal: 12 }
+ 
+ https://yaml.org/spec/1.1/#id858801 | https://yaml.org/spec/1.2.2/#example-timestamps
+ canonical: 2001-12-15T02:59:43.1Z
+@@ -125,10 +124,10 @@ iso8601: 2001-12-14t21:59:43.10-05:00
+ spaced: 2001-12-14 21:59:43.10 -5
+ date: 2002-12-14
+ {
+-  canonical: 2001-12-15T02:59:43.100Z,
+-  iso8601: 2001-12-15T02:59:43.100Z,
+-  spaced: 2001-12-15T02:59:43.100Z,
+-  date: 2002-12-14T00:00:00.000Z
++  canonical: '2001-12-15T02:59:43.1Z',
++  iso8601: '2001-12-14t21:59:43.10-05:00',
++  spaced: '2001-12-14 21:59:43.10 -5',
++  date: '2002-12-14'
+ }
+ 
+ https://github.com/kaitai-io/kaitai_struct_tests/blob/7d7ecf076cc02c5032ec399655b7c3d50bde96ad/formats_err/yaml_1.ksy

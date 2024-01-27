@@ -5,7 +5,16 @@ script_dir=$(dirname "$(readlink -f "${0}")")
 
 mkdir -p "${script_dir}/results-diffs/"
 
-git diff --no-index --output "${script_dir}"/results-diffs/yamljs_vs_js-yaml.diff -- "${script_dir}"/results/{yamljs,js-yaml}.txt || ex=$?
-[ -z "${ex}" ] || [ "${ex}" -eq 1 ]
-git diff --no-index --output "${script_dir}"/results-diffs/yaml_vs_js-yaml.diff -- "${script_dir}"/results/{yaml,js-yaml}.txt || ex=$?
-[ -z "${ex}" ] || [ "${ex}" -eq 1 ]
+gen_diff()
+{
+	git --no-pager diff --no-index --output "${script_dir}/results-diffs/${1}_vs_${2}.diff" -- "${script_dir}/results/${1}.txt" "${script_dir}/results/${2}.txt" || ex=$?
+	if [ -z "${ex}" ] || [ "${ex}" -eq 1 ]; then
+		return 0
+	fi
+	return "${ex}"
+}
+
+gen_diff yamljs js-yaml
+gen_diff yaml-1.1 js-yaml
+gen_diff yaml-1.2 js-yaml
+gen_diff yaml-1.1 yaml-1.2

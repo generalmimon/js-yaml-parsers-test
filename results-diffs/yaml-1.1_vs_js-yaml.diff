@@ -1,0 +1,167 @@
+diff --git 1/C:/temp/js-yaml-parsers-test/results/yaml-1.1.txt 2/C:/temp/js-yaml-parsers-test/results/js-yaml.txt
+index 4058599..8c8213d 100644
+--- 1/C:/temp/js-yaml-parsers-test/results/yaml-1.1.txt
++++ 2/C:/temp/js-yaml-parsers-test/results/js-yaml.txt
+@@ -50,17 +50,18 @@ instances:
+   foo:
+     value: condition ? 4 : 8
+ ERROR:
+-> YAMLParseError: Nested mappings are not allowed in compact mappings at line 3, column 12:
+-> 
+->     value: condition ? 4 : 8
+->            ^
++> YAMLException: bad indentation of a mapping entry in "input.ksy" (3:26)
+ > 
++>  1 | instances:
++>  2 |   foo:
++>  3 |     value: condition ? 4 : 8
++> ------------------------------^
+ 
+ https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$U6Oydw-sZNk4w1eHjLpZ9Y7cAsn6j7UD1n_F8BB0lhw
+ my_enum:
+   0: off
+   1: on
+-{ my_enum: { '0': false, '1': true } }
++{ my_enum: { '0': 'off', '1': 'on' } }
+ 
+ https://yaml.org/type/bool.html
+ yaml_1_1_only_truths: [y, Y, yes, Yes, YES, on, On, ON]
+@@ -69,15 +70,14 @@ yaml_1_2_core_schema_truths: [true, True, TRUE]
+ yaml_1_2_core_schema_falses: [false, False, FALSE]
+ {
+   yaml_1_1_only_truths: [
+-    true, true, true,
+-    true, true, true,
+-    true, true
++    'y',   'Y',   'yes',
++    'Yes', 'YES', 'on',
++    'On',  'ON'
+   ],
+   yaml_1_1_only_falses: [
+-    false, false,
+-    false, false,
+-    false, false,
+-    false, false
++    'n',   'N',   'no',
++    'No',  'NO',  'off',
++    'Off', 'OFF'
+   ],
+   yaml_1_2_core_schema_truths: [ true, true, true ],
+   yaml_1_2_core_schema_falses: [ false, false, false ]
+@@ -106,10 +106,10 @@ sexagesimal: 190:20:30
+ {
+   canonical: 685230,
+   decimal: 685230,
+-  octal: 685230,
++  octal: 2472256,
+   hexadecimal: 685230,
+   binary: 685230,
+-  sexagesimal: 685230
++  sexagesimal: '190:20:30'
+ }
+ 
+ https://yaml.org/spec/1.2.2/#example-integers
+@@ -117,7 +117,7 @@ canonical: 12345
+ decimal: +12345
+ octal: 0o14
+ hexadecimal: 0xC
+-{ canonical: 12345, decimal: 12345, octal: '0o14', hexadecimal: 12 }
++{ canonical: 12345, decimal: 12345, octal: 12, hexadecimal: 12 }
+ 
+ https://yaml.org/spec/1.1/#id858801 | https://yaml.org/spec/1.2.2/#example-timestamps
+ canonical: 2001-12-15T02:59:43.1Z
+@@ -125,10 +125,10 @@ iso8601: 2001-12-14t21:59:43.10-05:00
+ spaced: 2001-12-14 21:59:43.10 -5
+ date: 2002-12-14
+ {
+-  canonical: 2001-12-15T02:59:43.100Z,
+-  iso8601: 2001-12-15T02:59:43.100Z,
+-  spaced: 2001-12-15T02:59:43.100Z,
+-  date: 2002-12-14T00:00:00.000Z
++  canonical: '2001-12-15T02:59:43.1Z',
++  iso8601: '2001-12-14t21:59:43.10-05:00',
++  spaced: '2001-12-14 21:59:43.10 -5',
++  date: '2002-12-14'
+ }
+ 
+ https://github.com/kaitai-io/kaitai_struct_tests/blob/7d7ecf076cc02c5032ec399655b7c3d50bde96ad/formats_err/yaml_1.ksy
+@@ -136,11 +136,12 @@ meta:
+   id: yaml_1
+     seq:
+ ERROR:
+-> YAMLParseError: Nested mappings are not allowed in compact mappings at line 2, column 7:
+-> 
+->   id: yaml_1
+->       ^
++> YAMLException: bad indentation of a mapping entry in "input.ksy" (3:8)
+ > 
++>  1 | meta:
++>  2 |   id: yaml_1
++>  3 |     seq:
++> ------------^
+ 
+ https://github.com/kaitai-io/kaitai_struct_tests/blob/7d7ecf076cc02c5032ec399655b7c3d50bde96ad/formats_err/yaml_dup_keys.ksy
+ meta:
+@@ -152,17 +153,25 @@ seq:
+   - id: bar
+     type: u1
+ ERROR:
+-> YAMLParseError: Map keys must be unique at line 6, column 1:
+-> 
+->     type: u1
+-> seq:
+-> ^
++> YAMLException: duplicated mapping key in "input.ksy" (6:1)
+ > 
++>  3 | seq:
++>  4 |   - id: foo
++>  5 |     type: u1
++>  6 | seq:
++> -----^
++>  7 |   - id: bar
++>  8 |     type: u1
+ 
+ https://medium.com/@P0lip/yaml-is-great-but-dont-use-it-2d02a60181ab#ffe6
+ 2: "bar"
+ "2": "foo"
+-{ '2': 'foo' }
++ERROR:
++> YAMLException: duplicated mapping key in "input.ksy" (2:1)
++> 
++>  1 | 2: "bar"
++>  2 | "2": "foo"
++> -----^
+ 
+ https://github.com/kaitai-io/kaitai_struct_webide/issues/62
+ # Line 1
+@@ -176,12 +185,15 @@ types:
+       - id: species
+         type: s4
+ ERROR:
+-> YAMLParseError: All mapping items must start at the same column at line 8, column 1:
+-> 
+->       doc: An animal species
+->     seq:  # line 8, but yaml.js says line 4!
+-> ^
++> YAMLException: bad indentation of a mapping entry in "input.ksy" (8:5)
+ > 
++>  5 | types:
++>  6 |   animal:
++>  7 |       doc: An animal species
++>  8 |     seq:  # line 8, but yaml.js says ...
++> ---------^
++>  9 |       - id: species
++>  10 |         type: s4
+ 
+ https://github.com/kaitai-io/kaitai_struct/issues/693
+ {
+@@ -217,4 +229,8 @@ https://github.com/kaitai-io/kaitai_struct/issues/693
+ 
+ https://github.com/nodeca/js-yaml/pull/480
+ { toString: !<tag:yaml.org,2002:js/function> 'function (){return Date.now()}' } : 1
+-{ "{ toString: !!js/function 'function (){return Date.now()}' }": 1 }
++ERROR:
++> YAMLException: unknown tag !<tag:yaml.org,2002:js/function> in "input.ksy" (1:78)
++> 
++>  1 |  ... function (){return Date.now()}' } : 1
++> -----------------------------------------^

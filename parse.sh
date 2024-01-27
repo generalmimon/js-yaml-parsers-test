@@ -19,7 +19,7 @@ ks_base_dir=$(readlink -f "${ks_base_dir}")
 parse_js=${script_dir}/parse.js
 out_dir=${script_dir}/out
 
-for yaml_parser in yamljs yaml js-yaml
+for yaml_parser in yamljs yaml-1.2 yaml-1.1 js-yaml
 do
 	echo "${yaml_parser}"
 	find "${ks_base_dir}"/formats -type f -iname '*.ksy' -execdir node "${parse_js}" "${yaml_parser}" "${out_dir}/${yaml_parser}/ksf" {} +

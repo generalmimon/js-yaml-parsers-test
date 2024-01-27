@@ -13,7 +13,8 @@ Compare 3 YAML parsers available in the JS ecosystem:
   ```
   results/
   ├── js-yaml.txt
-  ├── yaml.txt
+  ├── yaml-1.1.txt
+  ├── yaml-1.2.txt
   └── yamljs.txt
   ```
 
@@ -33,14 +34,12 @@ Compare 3 YAML parsers available in the JS ecosystem:
   │   ├── ksf/
   │   ├── kst/
   │   └── kst_err/
-  ├── yaml/
-  │   ├── ksf/
-  │   ├── kst/
-  │   └── kst_err/
+  ├── yaml-1.1/
+  │   └── ...
+  ├── yaml-1.2/
+  │   └── ...
   └── yamljs/
-      ├── ksf/
-      ├── kst/
-      └── kst_err/
+      └── ...
   ```
 
   This makes it easy to compare the results of YAML parsers between each other, for example:
@@ -49,10 +48,4 @@ Compare 3 YAML parsers available in the JS ecosystem:
   git diff --no-index -- out/{yamljs,js-yaml}/
   ```
 
-* `./gen-results-diffs.sh` - generates the [results-diffs/](./results-diffs/) folder with diffs between logs in [results/](./results/):
-
-  ```
-  results-diffs/
-  ├── yaml_vs_js-yaml.diff
-  └── yamljs_vs_js-yaml.diff
-  ```
+* `./gen-results-diffs.sh` - generates the [results-diffs/](./results-diffs/) folder with diffs between logs in [results/](./results/)
