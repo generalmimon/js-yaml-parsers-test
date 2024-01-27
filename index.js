@@ -211,7 +211,7 @@ for (const [yamlParserName, initParser] of Object.entries(yamlParsers)) {
       output += inspect(parseYaml(testCase.input), { depth: null }) + '\n';
     } catch (e) {
       output += 'ERROR:\n';
-      output += e.toString().replace(/^/gm, '> ') + '\n';
+      output += e.toString().replace(/^/gm, '> ').replace(/\s+$/gm, '') + '\n';
     }
     output += '\n';
   }

@@ -51,10 +51,10 @@ instances:
     value: condition ? 4 : 8
 ERROR:
 > YAMLParseError: Nested mappings are not allowed in compact mappings at line 3, column 12:
-> 
+>
 >     value: condition ? 4 : 8
 >            ^
-> 
+>
 
 https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$U6Oydw-sZNk4w1eHjLpZ9Y7cAsn6j7UD1n_F8BB0lhw
 my_enum:
@@ -137,10 +137,10 @@ meta:
     seq:
 ERROR:
 > YAMLParseError: Nested mappings are not allowed in compact mappings at line 2, column 7:
-> 
+>
 >   id: yaml_1
 >       ^
-> 
+>
 
 https://github.com/kaitai-io/kaitai_struct_tests/blob/7d7ecf076cc02c5032ec399655b7c3d50bde96ad/formats_err/yaml_dup_keys.ksy
 meta:
@@ -153,11 +153,11 @@ seq:
     type: u1
 ERROR:
 > YAMLParseError: Map keys must be unique at line 6, column 1:
-> 
+>
 >     type: u1
 > seq:
 > ^
-> 
+>
 
 https://medium.com/@P0lip/yaml-is-great-but-dont-use-it-2d02a60181ab#ffe6
 2: "bar"
@@ -177,11 +177,11 @@ types:
         type: s4
 ERROR:
 > YAMLParseError: All mapping items must start at the same column at line 8, column 1:
-> 
+>
 >       doc: An animal species
 >     seq:  # line 8, but yaml.js says line 4!
 > ^
-> 
+>
 
 https://github.com/kaitai-io/kaitai_struct/issues/693
 {
