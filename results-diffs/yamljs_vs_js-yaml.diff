@@ -1,7 +1,7 @@
-diff --git 1/C:/temp/js-yaml-parsers-test/results/yamljs.txt 2/C:/temp/js-yaml-parsers-test/results/js-yaml.txt
-index 14ce1a6..8c8213d 100644
---- 1/C:/temp/js-yaml-parsers-test/results/yamljs.txt
-+++ 2/C:/temp/js-yaml-parsers-test/results/js-yaml.txt
+diff --git 1/results/yamljs.txt 2/results/js-yaml.txt
+index 14ce1a6..c0bfff1 100644
+--- 1/results/yamljs.txt
++++ 2/results/js-yaml.txt
 @@ -1,6 +1,6 @@
  https://github.com/kaitai-io/kaitai_struct_webide/issues/63
  size: 0x30150-0x30010
@@ -53,7 +53,7 @@ index 14ce1a6..8c8213d 100644
 -{ instances: { foo: { value: 'condition ? 4 : 8' } } }
 +ERROR:
 +> YAMLException: bad indentation of a mapping entry in "input.ksy" (3:26)
-+> 
++>
 +>  1 | instances:
 +>  2 |   foo:
 +>  3 |     value: condition ? 4 : 8
@@ -105,7 +105,7 @@ index 14ce1a6..8c8213d 100644
 -{ meta: { id: 'yaml_1\nseq:' } }
 +ERROR:
 +> YAMLException: bad indentation of a mapping entry in "input.ksy" (3:8)
-+> 
++>
 +>  1 | meta:
 +>  2 |   id: yaml_1
 +>  3 |     seq:
@@ -120,7 +120,7 @@ index 14ce1a6..8c8213d 100644
 -{ meta: { id: 'yaml_dup_keys' }, seq: [ { id: 'foo', type: 'u1' } ] }
 +ERROR:
 +> YAMLException: duplicated mapping key in "input.ksy" (6:1)
-+> 
++>
 +>  3 | seq:
 +>  4 |   - id: foo
 +>  5 |     type: u1
@@ -135,7 +135,7 @@ index 14ce1a6..8c8213d 100644
 -{ '2': 'bar' }
 +ERROR:
 +> YAMLException: duplicated mapping key in "input.ksy" (2:1)
-+> 
++>
 +>  1 | 2: "bar"
 +>  2 | "2": "foo"
 +> -----^
@@ -148,7 +148,7 @@ index 14ce1a6..8c8213d 100644
  ERROR:
 -> <ParseException> Indentation problem. (line 4: '  seq:  # line 8, but yaml.js says line 4!')
 +> YAMLException: bad indentation of a mapping entry in "input.ksy" (8:5)
-+> 
++>
 +>  5 | types:
 +>  6 |   animal:
 +>  7 |       doc: An animal species
@@ -196,6 +196,6 @@ index 14ce1a6..8c8213d 100644
  ERROR:
 -> <ParseException> Unexpected characters near "' } : 1". (line 1: '{ toString: !<tag:yaml.org,2002:js/function> 'function (){return Date.now()}' } : 1')
 +> YAMLException: unknown tag !<tag:yaml.org,2002:js/function> in "input.ksy" (1:78)
-+> 
++>
 +>  1 |  ... function (){return Date.now()}' } : 1
 +> -----------------------------------------^
