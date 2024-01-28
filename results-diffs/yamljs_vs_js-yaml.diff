@@ -2,7 +2,7 @@ diff --git 1/results/yamljs.txt 2/results/js-yaml.txt
 index 14ce1a6..c0bfff1 100644
 --- 1/results/yamljs.txt
 +++ 2/results/js-yaml.txt
-@@ -1,6 +1,6 @@
+@@ -1,200 +1,236 @@
  https://github.com/kaitai-io/kaitai_struct_webide/issues/63
  size: 0x30150-0x30010
 -{ size: 3304172224528 }
@@ -10,7 +10,9 @@ index 14ce1a6..c0bfff1 100644
  
  https://github.com/kaitai-io/kaitai_struct/issues/456
  instances:
-@@ -10,7 +10,11 @@ instances:
+   compressed:
+     io: _root._io
+     pos: 0x44 + _parent.compression_header_size + offset
      size: size
  {
    instances: {
@@ -23,7 +25,8 @@ index 14ce1a6..c0bfff1 100644
    }
  }
  
-@@ -19,11 +23,11 @@ enums:
+ https://github.com/kaitai-io/kaitai_struct_webide/issues/150
+ enums:
    my_enum:
      0b011: a
      0b110: b
@@ -37,7 +40,12 @@ index 14ce1a6..c0bfff1 100644
  
  https://github.com/kaitai-io/kaitai_struct_webide/issues/27
  seq:
-@@ -36,7 +40,7 @@ seq:
+   - id: stringdemo
+     size: 0
+     doc: This is a flow-style
+       multi-line string
+ {
+   seq: [
      {
        id: 'stringdemo',
        size: 0,
@@ -46,7 +54,8 @@ index 14ce1a6..c0bfff1 100644
      }
    ]
  }
-@@ -45,7 +49,13 @@ https://doc.kaitai.io/user_guide.html#_ternary_if_then_else_operator
+ 
+ https://doc.kaitai.io/user_guide.html#_ternary_if_then_else_operator
  instances:
    foo:
      value: condition ? 4 : 8
@@ -61,7 +70,49 @@ index 14ce1a6..c0bfff1 100644
  
  https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$U6Oydw-sZNk4w1eHjLpZ9Y7cAsn6j7UD1n_F8BB0lhw
  my_enum:
-@@ -95,10 +105,10 @@ binary: 0b1010_0111_0100_1010_1110
+   0: off
+   1: on
+ { my_enum: { '0': 'off', '1': 'on' } }
+ 
+ https://yaml.org/type/bool.html
+ yaml_1_1_only_truths: [y, Y, yes, Yes, YES, on, On, ON]
+ yaml_1_1_only_falses: [n, N, no, No, NO, off, Off, OFF]
+ yaml_1_2_core_schema_truths: [true, True, TRUE]
+ yaml_1_2_core_schema_falses: [false, False, FALSE]
+ {
+   yaml_1_1_only_truths: [
+     'y',   'Y',   'yes',
+     'Yes', 'YES', 'on',
+     'On',  'ON'
+   ],
+   yaml_1_1_only_falses: [
+     'n',   'N',   'no',
+     'No',  'NO',  'off',
+     'Off', 'OFF'
+   ],
+   yaml_1_2_core_schema_truths: [ true, true, true ],
+   yaml_1_2_core_schema_falses: [ false, false, false ]
+ }
+ 
+ https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$BYFX0GrJSMtXGQNrQm4nhFm9rbQ2miN0iOuWElVRVDc
+ foo: bar::baz
+ { foo: 'bar::baz' }
+ 
+ https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$jobD9SGEY6uln6PeBbbQ2Zy2Qmi1N95I4bsf5KsFJVc
+ value: '"this is a single quote: ''"'
+ { value: `"this is a single quote: '"` }
+ 
+ https://app.gitter.im/#/room/!UakDfENneauyHdHlha:gitter.im/$BwKJj1ErCmpZSCJoS_BIkY_v9BAnHhSACsJcbt1gNeA
+ cases:
+   package_type::pt_response: egts_pt_response
+ { cases: { 'package_type::pt_response': 'egts_pt_response' } }
+ 
+ https://yaml.org/type/int.html (YAML 1.1)
+ canonical: 685230
+ decimal: +685_230
+ octal: 02472256
+ hexadecimal: 0x_0A_74_AE
+ binary: 0b1010_0111_0100_1010_1110
  sexagesimal: 190:20:30
  {
    canonical: 685230,
@@ -75,7 +126,8 @@ index 14ce1a6..c0bfff1 100644
    sexagesimal: '190:20:30'
  }
  
-@@ -107,7 +117,7 @@ canonical: 12345
+ https://yaml.org/spec/1.2.2/#example-integers
+ canonical: 12345
  decimal: +12345
  octal: 0o14
  hexadecimal: 0xC
@@ -84,7 +136,7 @@ index 14ce1a6..c0bfff1 100644
  
  https://yaml.org/spec/1.1/#id858801 | https://yaml.org/spec/1.2.2/#example-timestamps
  canonical: 2001-12-15T02:59:43.1Z
-@@ -115,17 +125,23 @@ iso8601: 2001-12-14t21:59:43.10-05:00
+ iso8601: 2001-12-14t21:59:43.10-05:00
  spaced: 2001-12-14 21:59:43.10 -5
  date: 2002-12-14
  {
@@ -113,7 +165,10 @@ index 14ce1a6..c0bfff1 100644
  
  https://github.com/kaitai-io/kaitai_struct_tests/blob/7d7ecf076cc02c5032ec399655b7c3d50bde96ad/formats_err/yaml_dup_keys.ksy
  meta:
-@@ -136,12 +152,26 @@ seq:
+   id: yaml_dup_keys
+ seq:
+   - id: foo
+     type: u1
  seq:
    - id: bar
      type: u1
@@ -142,7 +197,13 @@ index 14ce1a6..c0bfff1 100644
  
  https://github.com/kaitai-io/kaitai_struct_webide/issues/62
  # Line 1
-@@ -155,7 +185,15 @@ types:
+ # Line 2
+ # Line 3
+ # Line 4
+ types:
+   animal:
+       doc: An animal species
+     seq:  # line 8, but yaml.js says line 4!
        - id: species
          type: s4
  ERROR:
@@ -159,7 +220,21 @@ index 14ce1a6..c0bfff1 100644
  
  https://github.com/kaitai-io/kaitai_struct/issues/693
  {
-@@ -177,24 +215,22 @@ https://github.com/kaitai-io/kaitai_struct/issues/693
+   "doc": "json test",
+   "meta": {
+     "id": "test",
+     "endian": "le"
+   },
+   "seq": [
+     {
+       "id": "version",
+       "contents": [
+         1,
+         255,
+         255,
+         255
+       ],
+       "doc": "4 - structure version"
      }
    ]
  }
