@@ -48,6 +48,16 @@ const testCases = [
   },
 
   {
+    url: [
+      "https://github.com/kaitai-io/kaitai_struct_webide/issues/27",
+      "https://github.com/kaitai-io/kaitai_struct_formats/blob/acdf0733633568c68869af15846abaf1c0eaa59a/image/tga.ksy#L17-L21",
+    ],
+    input: `doc:
+  This is a flow-style
+  multi-line string`,
+  },
+
+  {
     url: "https://doc.kaitai.io/user_guide.html#_ternary_if_then_else_operator",
     input: `instances:
   foo:
