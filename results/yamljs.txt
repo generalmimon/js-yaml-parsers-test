@@ -3,16 +3,8 @@ size: 0x30150-0x30010
 { size: 3304172224528 }
 
 https://github.com/kaitai-io/kaitai_struct/issues/456
-instances:
-  compressed:
-    io: _root._io
-    pos: 0x44 + _parent.compression_header_size + offset
-    size: size
-{
-  instances: {
-    compressed: { io: '_root._io', pos: 19332502143299584, size: 'size' }
-  }
-}
+pos: 0x44 + _parent.compression_header_size + offset
+{ pos: 19332502143299584 }
 
 https://github.com/kaitai-io/kaitai_struct_webide/issues/150
 enums:
@@ -26,20 +18,9 @@ value: 0b10101010
 { value: 0 }
 
 https://github.com/kaitai-io/kaitai_struct_webide/issues/27
-seq:
-  - id: stringdemo
-    size: 0
-    doc: This is a flow-style
-      multi-line string
-{
-  seq: [
-    {
-      id: 'stringdemo',
-      size: 0,
-      doc: 'This is a flow-style\nmulti-line string'
-    }
-  ]
-}
+doc: This is a flow-style
+  multi-line string
+{ doc: 'This is a flow-style\nmulti-line string' }
 
 https://doc.kaitai.io/user_guide.html#_ternary_if_then_else_operator
 instances:

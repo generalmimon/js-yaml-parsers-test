@@ -25,11 +25,7 @@ const testCases = [
 
   {
     url: "https://github.com/kaitai-io/kaitai_struct/issues/456",
-    input: `instances:
-  compressed:
-    io: _root._io
-    pos: 0x44 + _parent.compression_header_size + offset
-    size: size`,
+    input: `pos: 0x44 + _parent.compression_header_size + offset`,
   },
 
   {
@@ -47,11 +43,8 @@ const testCases = [
 
   {
     url: "https://github.com/kaitai-io/kaitai_struct_webide/issues/27",
-    input: `seq:
-  - id: stringdemo
-    size: 0
-    doc: This is a flow-style
-      multi-line string`,
+    input: `doc: This is a flow-style
+  multi-line string`,
   },
 
   {
