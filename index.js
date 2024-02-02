@@ -171,12 +171,7 @@ types:
   "seq": [
     {
       "id": "version",
-      "contents": [
-        1,
-        255,
-        255,
-        255
-      ],
+      "contents": [1, 255, 255, 255],
       "doc": "4 - structure version"
     }
   ]

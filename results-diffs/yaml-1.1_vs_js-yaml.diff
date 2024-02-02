@@ -1,8 +1,8 @@
 diff --git 1/results/yaml-1.1.txt 2/results/js-yaml.txt
-index eedfdf9..133e05b 100644
+index 406a5f0..529f81b 100644
 --- 1/results/yaml-1.1.txt
 +++ 2/results/js-yaml.txt
-@@ -1,203 +1,219 @@
+@@ -1,198 +1,214 @@
  https://github.com/kaitai-io/kaitai_struct_webide/issues/63
  size: 0x30150-0x30010
  { size: '0x30150-0x30010' }
@@ -227,12 +227,7 @@ index eedfdf9..133e05b 100644
    "seq": [
      {
        "id": "version",
-       "contents": [
-         1,
-         255,
-         255,
-         255
-       ],
+       "contents": [1, 255, 255, 255],
        "doc": "4 - structure version"
      }
    ]
