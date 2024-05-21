@@ -76,7 +76,9 @@ const testCases = [
     input: `yaml_1_1_only_truths: [y, Y, yes, Yes, YES, on, On, ON]
 yaml_1_1_only_falses: [n, N, no, No, NO, off, Off, OFF]
 yaml_1_2_core_schema_truths: [true, True, TRUE]
-yaml_1_2_core_schema_falses: [false, False, FALSE]`,
+yaml_1_2_core_schema_falses: [false, False, FALSE]
+yaml_1_2_core_schema_truths_incorrect_case: [tRue, TrUe, TRUe]
+yaml_1_2_core_schema_falses_incorrect_case: [fAlse, FaLse, FALSe]`,
   },
 
   {
