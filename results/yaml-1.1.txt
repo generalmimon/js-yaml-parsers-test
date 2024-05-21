@@ -67,7 +67,7 @@ yaml_1_2_core_schema_falses_incorrect_case: [fAlse, FaLse, FALSe]
   yaml_1_2_core_schema_truths: [ true, true, true ],
   yaml_1_2_core_schema_falses: [ false, false, false ],
   yaml_1_2_core_schema_truths_incorrect_case: [ 'tRue', 'TrUe', 'TRUe' ],
-  yaml_1_2_core_schema_falses_incorrect_case: [ false, false, false ]
+  yaml_1_2_core_schema_falses_incorrect_case: [ 'fAlse', 'FaLse', 'FALSe' ]
 }
 
 https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$BYFX0GrJSMtXGQNrQm4nhFm9rbQ2miN0iOuWElVRVDc

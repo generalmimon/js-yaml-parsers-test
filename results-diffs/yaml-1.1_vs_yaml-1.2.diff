@@ -1,5 +1,5 @@
 diff --git 1/results/yaml-1.1.txt 2/results/yaml-1.2.txt
-index 38861b2..b47b3cd 100644
+index 9b7f2a9..b47b3cd 100644
 --- 1/results/yaml-1.1.txt
 +++ 2/results/yaml-1.2.txt
 @@ -1,202 +1,201 @@
@@ -81,8 +81,7 @@ index 38861b2..b47b3cd 100644
    yaml_1_2_core_schema_truths: [ true, true, true ],
    yaml_1_2_core_schema_falses: [ false, false, false ],
    yaml_1_2_core_schema_truths_incorrect_case: [ 'tRue', 'TrUe', 'TRUe' ],
--  yaml_1_2_core_schema_falses_incorrect_case: [ false, false, false ]
-+  yaml_1_2_core_schema_falses_incorrect_case: [ 'fAlse', 'FaLse', 'FALSe' ]
+   yaml_1_2_core_schema_falses_incorrect_case: [ 'fAlse', 'FaLse', 'FALSe' ]
  }
  
  https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$BYFX0GrJSMtXGQNrQm4nhFm9rbQ2miN0iOuWElVRVDc
