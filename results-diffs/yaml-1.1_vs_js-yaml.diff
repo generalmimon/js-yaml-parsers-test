@@ -1,8 +1,8 @@
 diff --git 1/results/yaml-1.1.txt 2/results/js-yaml.txt
-index 406a5f0..529f81b 100644
+index 38861b2..ece4b62 100644
 --- 1/results/yaml-1.1.txt
 +++ 2/results/js-yaml.txt
-@@ -1,198 +1,214 @@
+@@ -1,202 +1,218 @@
  https://github.com/kaitai-io/kaitai_struct_webide/issues/63
  size: 0x30150-0x30010
  { size: '0x30150-0x30010' }
@@ -61,6 +61,8 @@ index 406a5f0..529f81b 100644
  yaml_1_1_only_falses: [n, N, no, No, NO, off, Off, OFF]
  yaml_1_2_core_schema_truths: [true, True, TRUE]
  yaml_1_2_core_schema_falses: [false, False, FALSE]
+ yaml_1_2_core_schema_truths_incorrect_case: [tRue, TrUe, TRUe]
+ yaml_1_2_core_schema_falses_incorrect_case: [fAlse, FaLse, FALSe]
  {
    yaml_1_1_only_truths: [
 -    true, true, true,
@@ -80,7 +82,10 @@ index 406a5f0..529f81b 100644
 +    'Off', 'OFF'
    ],
    yaml_1_2_core_schema_truths: [ true, true, true ],
-   yaml_1_2_core_schema_falses: [ false, false, false ]
+   yaml_1_2_core_schema_falses: [ false, false, false ],
+   yaml_1_2_core_schema_truths_incorrect_case: [ 'tRue', 'TrUe', 'TRUe' ],
+-  yaml_1_2_core_schema_falses_incorrect_case: [ false, false, false ]
++  yaml_1_2_core_schema_falses_incorrect_case: [ 'fAlse', 'FaLse', 'FALSe' ]
  }
  
  https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im/$BYFX0GrJSMtXGQNrQm4nhFm9rbQ2miN0iOuWElVRVDc
